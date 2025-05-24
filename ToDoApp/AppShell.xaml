@@ -7,9 +7,17 @@
     Shell.FlyoutBehavior="Flyout"
     Title="ToDoApp">
 
+    <FlyoutItem>
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
+    
     <ShellContent
-        Title="Home"
+        Title="Lista zadań"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <ShellContent
+     Title="Dodaj zadanie"
+     ContentTemplate="{DataTemplate local:AddTaskPage}"
+     Route="AddTaskPage" />
 </Shell>
