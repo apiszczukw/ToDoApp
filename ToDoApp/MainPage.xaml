@@ -6,19 +6,29 @@
     <ScrollView>
         <StackLayout>
 
-            <Grid ColumnDefinitions="Auto, 2*, 3*" ColumnSpacing="15" Padding="10" BackgroundColor="LightBlue">
-                <Label>Id</Label>
+            <Grid ColumnDefinitions="Auto, 2*, 3*,Auto" ColumnSpacing="15" Padding="10" BackgroundColor="LightBlue">
+                <Label>Status</Label>
                 <Label Grid.Column="1">Nazwa</Label>
                 <Label Grid.Column="2">Opis</Label>
+                <Label Grid.Column="3"></Label>
             </Grid>
 
             <CollectionView ItemsSource="{Binding TasksList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid ColumnDefinitions="Auto, 2*, 3*" ColumnSpacing="15" Padding="10">
-                            <Label Text="{Binding Id}"/>
-                            <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold"/>
-                            <Label Grid.Column="2" Text="{Binding Desc}"/>
+                        <Grid ColumnDefinitions="Auto,2*,3*,Auto" ColumnSpacing="15" Padding="10">
+                            <CheckBox 
+                                x:Name="Done"
+                                IsChecked="{Binding IsFinished, Mode=TwoWay}"
+                                CheckedChanged="Done_CheckedChanged"/>
+                            
+                            <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" VerticalOptions="Center"/>
+                            <Label Grid.Column="2" Text="{Binding Desc}" VerticalOptions="Center"/>
+                            <Button 
+                                x:Name="DeleteBtn" 
+                                Grid.Column="3" 
+                                Text="🗑️" 
+                                Clicked="DeleteBtn_Clicked"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
